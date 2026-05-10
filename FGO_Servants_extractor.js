@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         FGO Identity Extractor + Profile Scraper
 // @namespace    vm-fgo-identity-profile
+// @icon         https://static.wikia.nocookie.net/typemoon/images/4/4a/Site-favicon.ico/revision/latest?cb=20210706163928
 // @version      2.0
 // @description  Extract servant links and scrape full Profile section
 // @match        https://typemoon.fandom.com/wiki/List_of_Servants_in_Fate/Grand_Order*
