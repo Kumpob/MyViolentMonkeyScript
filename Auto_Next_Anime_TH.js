@@ -4,8 +4,8 @@
 // @icon
 // @version     1.0.0
 //
-// @match       https://lnwanime.com/anime/*/episode/*
-// @match       https://anime-hdzero.com/anime/*/episode/*
+// @match       https://lnwani-me.com/anime/*/episode/*
+// @match       https://anime-hd-zero.com/anime/*/episode/*
 // @grant       none
 //
 // @author      -
@@ -16,7 +16,6 @@
 
 (function () {
     'use strict';
-
 
   window.addEventListener('load', () => {
         // Change this selector to your button
@@ -66,6 +65,8 @@
                 if (nextLink) {
                     console.log('Clicking Next');
                     nextLink.click();
+                }else {
+                  console.log('No Next')
                 }
 
             }, 3000);
@@ -78,5 +79,29 @@
     document.addEventListener('webkitfullscreenchange', tryStartTimer);
     document.addEventListener('mozfullscreenchange', tryStartTimer);
     document.addEventListener('MSFullscreenChange', tryStartTimer);
+
+  let lastUrl = location.href;
+
+function updatePage() {
+    if (location.pathname.includes('episode')) {
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+    } else {
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+    }
+}
+
+updatePage();
+
+new MutationObserver(() => {
+    if (location.href !== lastUrl) {
+        lastUrl = location.href;
+        updatePage();
+    }
+}).observe(document, {
+    subtree: true,
+    childList: true
+});
 
 })();
