@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        Remove truncate and Fix Font Size
 // @namespace   Violentmonkey Scripts
-// @icon        https://anime-hdzero.com/favicon.png
+// @icon        https://anime-hd-zero.com/favicon.png
 // @version     1.0.0
 //
-// @match       https://anime-hdzero.com/*
+// @match       https://anime-hd-zero.com/*
 // @grant       none
 //
 // @author      -
