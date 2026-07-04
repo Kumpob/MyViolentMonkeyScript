@@ -18,19 +18,53 @@
 ========================= */
 
 function extractIdentityLinks() {
-
     const rows = document.querySelectorAll('tbody tr');
     const links = [];
 
     rows.forEach(row => {
+        // Check column 2
+        const typeCell = row.querySelector('td:nth-child(2)');
+        if (!typeCell) return;
 
+        const type = typeCell.textContent.trim().toLowerCase();
+
+        // Skip NPCs and Bosses
+        if (type.includes("npc") || type.includes("costume")) {
+            return;
+        }
+
+        // Get links from column 3
         const identityCell = row.querySelector('td:nth-child(3)');
         if (!identityCell) return;
 
+        if (
+            identityCell.textContent.toLowerCase().includes("boss") ||
+            identityCell.textContent.toLowerCase().includes("story") ||
+            identityCell.textContent.toLowerCase().includes("swimsuit") ||
+            identityCell.textContent.toLowerCase().includes("summer") ||
+            identityCell.textContent.toLowerCase().includes("halloween") ||
+            identityCell.textContent.toLowerCase().includes("santa") ||
+            identityCell.textContent.toLowerCase().includes("christmas") ||
+            identityCell.textContent.toLowerCase().includes("kid") ||
+            identityCell.textContent.toLowerCase().includes("child") ||
+            identityCell.textContent.toLowerCase().includes("lily") ||
+            identityCell.textContent.toLowerCase().includes("bride") ||
+            identityCell.textContent.toLowerCase().includes("elizabeth") ||
+            identityCell.textContent.toLowerCase().includes("mecha")
+        ) {
+            return;
+        }
+
         identityCell.querySelectorAll('a[href]').forEach(a => {
+            if (a.href.includes("boss") || a.href.includes("story") ||
+                a.href.includes("swimsuit") || a.href.includes("summer") ||
+                a.href.includes("santa") || a.href.includes("halloween") ||
+                a.href.includes("christmas") || a.href.includes("kid") ||
+                a.href.includes("child") || a.href.includes("lily") ||
+                a.href.includes("bride") || a.href.includes("elizabeth") ||
+                a.href.includes("mecha")  ) return;
             links.push(a.href);
         });
-
     });
 
     if (!links.length) {
@@ -184,9 +218,9 @@ async function runScraper() {
     const input = prompt(
 `Paste servant links
 Supports:
-• newline
-• comma
-• quoted links`
+ newline
+ comma
+ quoted links`
     );
 
     if (!input) return;
