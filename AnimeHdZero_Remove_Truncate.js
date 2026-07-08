@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        Remove truncate and Fix Font Size
 // @namespace   Violentmonkey Scripts
-// @icon        https://anime-hd-zero.com/favicon.png
+// @icon        https://animehdzeroo.net/favicon.png
 // @version     1.0.0
 //
-// @match       https://anime-hd-zero.com/*
+// @match       https://animehdzeroo.net/*
 // @grant       none
 //
 // @author      -
@@ -32,15 +32,15 @@
                     style.replace(/hsl\(var\(--accent\)\s*\/\s*0\.15\)/g, 'hsl(var(--accent) / 0.5)')
                 );
             }
-          if (style && style.includes('clamp(')) {
-    el.setAttribute(
-        'style',
-        style.replace(
-            /clamp\(\s*([\d.]+px)\s*,\s*([\d.]+vw)\s*,\s*[\d.]+px\s*\)/g,
-            'clamp($1, $2, 24px)'
-        )
-    );
-}
+            if (style && style.includes('clamp(')) {
+                el.setAttribute(
+                    'style',
+                    style.replace(
+                        /clamp\(\s*([\d.]+px)\s*,\s*([\d.]+vw)\s*,\s*[\d.]+px\s*\)/g,
+                        'clamp($1, $2, 24px)'
+                    )
+                );
+            }
         });
     }
 
