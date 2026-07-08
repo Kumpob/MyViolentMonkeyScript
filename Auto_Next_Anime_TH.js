@@ -5,7 +5,7 @@
 // @version     1.0.0
 //
 // @match       https://lnwani-me.com/anime/*/episode/*
-// @match       https://anime-hd-zero.com/anime/*/episode/*
+// @match       https://animehdzeroo.net/anime/*/episode/*
 // @grant       none
 //
 // @author      -
@@ -14,10 +14,10 @@
 
 
 
-(function () {
+(function() {
     'use strict';
 
-  window.addEventListener('load', () => {
+    window.addEventListener('load', () => {
         // Change this selector to your button
         const button = [...document.querySelectorAll('button')]
             .find(btn => btn.textContent.includes('ตัวเล่นสำรอง'));
@@ -33,9 +33,9 @@
 
     function isFullscreen() {
         return document.fullscreenElement ||
-               document.webkitFullscreenElement ||
-               document.mozFullScreenElement ||
-               document.msFullscreenElement;
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement;
     }
 
     function tryStartTimer() {
@@ -65,8 +65,8 @@
                 if (nextLink) {
                     console.log('Clicking Next');
                     nextLink.click();
-                }else {
-                  console.log('No Next')
+                } else {
+                    console.log('No Next')
                 }
 
             }, 3000);
@@ -80,28 +80,28 @@
     document.addEventListener('mozfullscreenchange', tryStartTimer);
     document.addEventListener('MSFullscreenChange', tryStartTimer);
 
-  let lastUrl = location.href;
+    let lastUrl = location.href;
 
-function updatePage() {
-    if (location.pathname.includes('episode')) {
-        document.documentElement.style.overflow = "hidden";
-        document.body.style.overflow = "hidden";
-    } else {
-        document.documentElement.style.overflow = "";
-        document.body.style.overflow = "";
+    function updatePage() {
+        if (location.pathname.includes('episode')) {
+            document.documentElement.style.overflow = "hidden";
+            document.body.style.overflow = "hidden";
+        } else {
+            document.documentElement.style.overflow = "";
+            document.body.style.overflow = "";
+        }
     }
-}
 
-updatePage();
+    updatePage();
 
-new MutationObserver(() => {
-    if (location.href !== lastUrl) {
-        lastUrl = location.href;
-        updatePage();
-    }
-}).observe(document, {
-    subtree: true,
-    childList: true
-});
+    new MutationObserver(() => {
+        if (location.href !== lastUrl) {
+            lastUrl = location.href;
+            updatePage();
+        }
+    }).observe(document, {
+        subtree: true,
+        childList: true
+    });
 
 })();
